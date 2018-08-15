@@ -1,0 +1,1 @@
+@click="" is equivalent to v-on:click=""

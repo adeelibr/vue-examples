@@ -10,4 +10,11 @@ new Vue({
       this.playerHealth = 50;
     }, 2000);
   },
+  methods: {
+    onStartGame: function () {
+      this.isGameRunning = true;
+      this.playerHealth = 100;
+      this.monsterHealth = 100;
+    },
+  }
 })
