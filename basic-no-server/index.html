@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Basic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="src/vue.js"></script>
+
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{ sayHi() }}</h2>
+    <p>{{ title }} -
+      <a v-bind:href="link">Details</a>
+    </p>
+    <input type="text" v-on:input="onChange" />
+    <input type="text" v-model="title" />
+
+    <div>
+      {{ count }} || {{ countResult }}
+      <button v-on:click="onIncrease(3, $event)">Increase</button>
+    </div>
+
+    <div>
+      <p v-on:mouseover="onUpdateCoordinates">Coordiantes are {{ coordinates.x }} \ {{ coordinates.y }}</p>
+      <p v-on:mousemove="onUpdateCoordinates">Coordiantes are {{ coordinates.x }} \ {{ coordinates.y }}</p>
+    </div>
+  </div>
+</body>
+
+<script src="src/app.js"></script>
+
+</html>

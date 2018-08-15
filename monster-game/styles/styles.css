@@ -1,0 +1,17 @@
+body {
+  background-color: #fcfcfc;
+}
+
+.health-bar-container {
+  background-color: #eee;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.health-bar {
+  background-color: green;
+  color: #fff;
+  padding: 10px 15px;
+  width: 90%;
+  transition: width 500ms;
+}
