@@ -47,16 +47,24 @@
       <!-- Start User Moves -->
       <div class="row mb-2" v-if="isGameRunning">
         <div class="col-md-3">
-          <button id="attack" type="button" class="btn btn-outline-danger btn-block">Attack</button>
+          <button id="attack" type="button" class="btn btn-outline-danger btn-block" @click="onAttack">
+            Attack
+          </button>
         </div>
         <div class="col-md-3">
-          <button id="special-attack" type="button" class="btn btn-outline-danger btn-block">Special Attack</button>
+          <button id="special-attack" type="button" class="btn btn-outline-danger btn-block" @click="onSpecialAttack">
+            Special Attack
+          </button>
         </div>
         <div class="col-md-3">
-          <button id="heal" type="button" class="btn btn-outline-danger btn-block">Heal</button>
+          <button id="heal" type="button" class="btn btn-outline-danger btn-block" @click="onHeal">
+            Heal
+          </button>
         </div>
         <div class="col-md-3">
-          <button id="give-up" type="button" class="btn btn-outline-danger btn-block">Give Up</button>
+          <button id="give-up" type="button" class="btn btn-outline-danger btn-block" @click="onGiveUp">
+            Give Up
+          </button>
         </div>
       </div>
       <!-- End User Moves -->
