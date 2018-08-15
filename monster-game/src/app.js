@@ -19,13 +19,30 @@ new Vue({
     onAttack: function() {
       this.monsterHealth -= this.onCalculateDamage({ max: 10, min: 3 });
       if (this.isGameWon()) { return }
+      this.onMonsterAttack();
+    },
+    onSpecialAttack: function() { 
+      this.monsterHealth -= this.onCalculateDamage({ max: 20, min: 10 });
+      if (this.isGameWon()) { return }
+      this.onMonsterAttack();
+    },
+    onHeal: function() {
+      if (this.playerHealth <= 90 ) {
+        this.playerHealth += 10;
+      } else {
+        this.playerHealth = 100;
+      }
+      this.onMonsterAttack();
+    },
+    onGiveUp: function() {},
+
+    /**
+     * Monster Utils
+     */
+    onMonsterAttack: function () {
       this.playerHealth -= this.onCalculateDamage({ max: 12, min: 5 });
       this.isGameWon();
     },
-    onSpecialAttack: function() {},
-    onHeal: function() {},
-    onGiveUp: function() {},
-
     /**
      * Helpers
      */
