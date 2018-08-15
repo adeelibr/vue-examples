@@ -4,33 +4,60 @@ new Vue({
     playerHealth: 100,
     monsterHealth: 100,
     isGameRunning: false,
+    turns: [],
   },
   mounted: function () {
     setTimeout(() => {
-      this.playerHealth = 50;
-    }, 2000);
+      this.playerHealth = 60;
+    }, 1500);
+    setTimeout(() => {
+      this.monsterHealth = 80;
+    }, 1000);
+    setTimeout(() => {
+      this.monsterHealth = 100;
+      this.playerHealth = 100;
+    }, 3000);
   },
   methods: {
     onStartGame: function() {
-      this.isGameRunning = true;
       this.playerHealth = 100;
       this.monsterHealth = 100;
+      this.isGameRunning = true;
+      this.turns = [];
     },
     onAttack: function() {
-      this.monsterHealth -= this.onCalculateDamage({ max: 10, min: 3 });
+      const damage = this.onCalculateDamage({ max: 10, min: 3 });
+      this.monsterHealth -= damage;
+      this.turns.unshift({
+        isPlayerTurn: true,
+        message: `Player hits monster for ${damage} points`
+      });
       if (this.isGameWon()) { return }
       this.onMonsterAttack();
     },
-    onSpecialAttack: function() { 
-      this.monsterHealth -= this.onCalculateDamage({ max: 20, min: 10 });
+    onSpecialAttack: function() {
+      const damage = this.onCalculateDamage({ max: 20, min: 10 });
+      this.monsterHealth -= damage;
+      this.turns.unshift({
+        isPlayerTurn: true,
+        message: `Player hits special attack to monster for ${damage} points`
+      });
       if (this.isGameWon()) { return }
       this.onMonsterAttack();
     },
     onHeal: function() {
       if (this.playerHealth <= 90 ) {
         this.playerHealth += 10;
+        this.turns.unshift({
+          isPlayerTurn: true,
+          message: `Player heals for 10 points`
+        });
       } else {
         this.playerHealth = 100;
+        this.turns.unshift({
+          isPlayerTurn: true,
+          message: `Player heals at 100 points`
+        });
       }
       this.onMonsterAttack();
     },
@@ -41,8 +68,13 @@ new Vue({
      * Monster Utils
      */
     onMonsterAttack: function () {
-      this.playerHealth -= this.onCalculateDamage({ max: 12, min: 5 });
+      const damage = this.onCalculateDamage({ max: 12, min: 5 });
+      this.playerHealth -= damage;
       this.isGameWon();
+      this.turns.unshift({
+        isPlayerTurn: false,
+        message: `Monster hits player for ${damage} points`
+      });
     },
     /**
      * Helpers

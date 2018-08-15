@@ -70,9 +70,11 @@
       <!-- End User Moves -->
 
       <!-- Start Game Story -->
-      <div>
-        <ul>
-          <li></li>
+      <div v-if="turns.length > 0">
+        <ul class="all-turns">
+          <li v-for="turn in turns" :class="{'player-turn': turn.isPlayerTurn, 'monster-turn': !turn.isPlayerTurn}">
+            {{ turn.message }}
+          </li>
         </ul>
       </div>
       <!-- End Game Story -->

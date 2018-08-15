@@ -15,3 +15,18 @@ body {
   width: 90%;
   transition: width 500ms;
 }
+
+.all-turns {
+  list-style-type: none;
+  padding: 0;
+}
+
+.player-turn { 
+  background-color: lightgreen;
+  padding: 10px;
+}
+
+.monster-turn {
+  background-color: lightsalmon;
+  padding: 10px;
+}
