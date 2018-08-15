@@ -34,8 +34,9 @@ new Vue({
       }
       this.onMonsterAttack();
     },
-    onGiveUp: function() {},
-
+    onGiveUp: function() {
+      this.isGameRunning = false;
+    },
     /**
      * Monster Utils
      */
